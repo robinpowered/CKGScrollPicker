@@ -20,7 +20,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    CKGScrollPicker *capacityPicker = [[CKGScrollPicker alloc] initWithOptions:@[@"Any", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"10+"]];
+    CKGScrollPicker *capacityPicker = [[CKGScrollPicker alloc] init];
+    capacityPicker.delegate = self;
+    capacityPicker.options = @[@"Any", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"10+"];
     [capacityPicker loadView];
     [self.capacityView addSubview:capacityPicker];
     [capacityPicker alignLeading:@"16" trailing:@"-16" toView:self.capacityView];
@@ -28,5 +30,8 @@
     [capacityPicker constrainHeight:@"60"];
 }
 
+- (void)picker:(CKGScrollPicker *)picker didSelectOptionIndex:(NSInteger)index {
+    NSLog(@"selected %ld", (long)index);
+}
 
 @end

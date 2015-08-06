@@ -7,9 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+@class CKGScrollPicker;
 
-@interface CKGScrollPicker : UIView
+@protocol CKGScrollPickerDelegate <NSObject>
 
+@optional
+- (void)picker:(CKGScrollPicker *)picker didSelectOptionIndex:(NSInteger)index;
+
+@end
+
+@interface CKGScrollPicker : UIView <UIScrollViewDelegate>
+
+@property (nonatomic, strong) NSArray *options;
 @property (nonatomic) CGSize iconSize;
 @property (nonatomic, strong) UIFont *font;
 @property (nonatomic, strong) UIColor *textColor;
@@ -17,7 +26,8 @@
 @property (nonatomic) CGFloat circleSize;
 @property (nonatomic) CGFloat circleBorderWidth;
 
-- (instancetype)initWithOptions:(NSArray *)options;
+@property (nonatomic, weak) id<CKGScrollPickerDelegate> delegate;
+
 - (void)loadView;
 
 @end

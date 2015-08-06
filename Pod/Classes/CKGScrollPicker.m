@@ -12,17 +12,16 @@
 @interface CKGScrollPicker ()
 
 @property (nonatomic, strong, readonly) UIScrollView *scrollView;
-@property (nonatomic, strong, readonly) NSArray *options;
 
 @end
 
 @implementation CKGScrollPicker
 
-- (instancetype)initWithOptions:(NSArray *)options {
+- (instancetype)init {
     self = [super init];
     if (self) {
         _scrollView = [[UIScrollView alloc] init];
-        _options = options;
+        _options = @[@"0"];
         _textColor = [UIColor grayColor];
         _font = [UIFont systemFontOfSize:16];
         _iconSize = CGSizeMake(65, 40);
@@ -37,6 +36,7 @@
     [self addSubview:self.scrollView];
     [self.scrollView constrainWidth:[NSString stringWithFormat:@"%f", self.iconSize.width] height:[NSString stringWithFormat:@"%f", self.iconSize.height]];
     [self.scrollView alignCenterWithView:self];
+    self.scrollView.delegate = self;
     self.scrollView.clipsToBounds = NO;
     self.scrollView.pagingEnabled = YES;
     self.scrollView.showsHorizontalScrollIndicator = NO;
@@ -89,8 +89,17 @@
 
 - (void)singleTap:(UITapGestureRecognizer *)gesture {
     CGPoint tapPoint = [gesture locationInView:self.scrollView];
-    CGFloat offset = self.iconSize.width * (int)(tapPoint.x/self.iconSize.width);
-    [self.scrollView setContentOffset:CGPointMake(offset, 0) animated:YES];
+    NSInteger index = (NSInteger)(tapPoint.x/self.iconSize.width);
+    [self.scrollView setContentOffset:CGPointMake(index*self.iconSize.width, 0) animated:YES];
+    if ([self.delegate respondsToSelector:@selector(picker:didSelectOptionIndex:)]) {
+        [self.delegate picker:self didSelectOptionIndex:index];
+    }
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if ([self.delegate respondsToSelector:@selector(picker:didSelectOptionIndex:)]) {
+        [self.delegate picker:self didSelectOptionIndex:(NSInteger)(scrollView.contentOffset.x/self.iconSize.width)];
+    }
 }
 
 @end

@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  CKGScrollPicker: 4c6a41974253e44e9e6685c5924a6055cc6af2e0
+  CKGScrollPicker: f4a654885e5ad8b01ce4639aa5e234db6f2bf8d5
   Expecta: 54e8a3530add08f4f0208c111355eda7cde74a53
   FLKAutoLayout: 9db6b30c2008d230da608e62c607b11c23b942e6
   Specta: cf3e4188cf35375c3ee2cd03f8db8f1f4ef98234

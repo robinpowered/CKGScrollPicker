@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 Courtney Guo. All rights reserved.
 //
 
+#import "CKGScrollPicker.h"
+
 @import UIKit;
 
-@interface CKGViewController : UIViewController
+@interface CKGViewController : UIViewController <CKGScrollPickerDelegate>
 
 @end
