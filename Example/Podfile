@@ -1,0 +1,13 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'CKGScrollPicker_Example', :exclusive => true do
+  pod "CKGScrollPicker", :path => "../"
+end
+
+target 'CKGScrollPicker_Tests', :exclusive => true do
+  pod "CKGScrollPicker", :path => "../"
+
+  pod 'Specta'
+  pod 'Expecta'
+end
