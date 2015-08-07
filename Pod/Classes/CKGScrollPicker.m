@@ -92,7 +92,6 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     [self.scrollView setContentOffset:CGPointMake(self.selectedIndex*self.iconSize.width, 0) animated:NO];
-    NSLog(@"layout subviews, index: %ld", (long)self.selectedIndex);
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
