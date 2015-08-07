@@ -12,16 +12,19 @@
 @interface CKGScrollPicker ()
 
 @property (nonatomic, strong, readonly) UIScrollView *scrollView;
+@property (nonatomic, strong, readonly) NSArray *options;
+@property (nonatomic, readonly) NSInteger selectedIndex;
 
 @end
 
 @implementation CKGScrollPicker
 
-- (instancetype)init {
+- (id)initWithOptions:(NSArray *)options selectedIndex:(NSInteger)index {
     self = [super init];
     if (self) {
         _scrollView = [[UIScrollView alloc] init];
-        _options = @[@"0"];
+        _options = options;
+        _selectedIndex = index;
         _textColor = [UIColor grayColor];
         _font = [UIFont systemFontOfSize:16];
         _iconSize = CGSizeMake(65, 40);
@@ -30,6 +33,10 @@
         _circleBorderWidth = 1;
     }
     return self;
+}
+
++ (instancetype)pickerWithOptions:(NSArray *)options selectedIndex:(NSInteger)index {
+    return [[self alloc] initWithOptions:options selectedIndex:index];
 }
 
 - (void)loadView {
@@ -67,7 +74,6 @@
     }
     [self.scrollView addSubview:contentView];
     [contentView alignTop:@"0" leading:@"0" bottom:@"0" trailing:@"0" toView:self.scrollView];
-    
     UIView *circle = [[UIView alloc] init];
     [self addSubview:circle];
     [circle constrainWidth:[NSString stringWithFormat:@"%f", self.circleSize] height:[NSString stringWithFormat:@"%f", self.circleSize]];
@@ -81,6 +87,12 @@
     singleTapGestureRecognizer.enabled = YES;
     singleTapGestureRecognizer.cancelsTouchesInView = NO;
     [self.scrollView addGestureRecognizer:singleTapGestureRecognizer];
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    [self.scrollView setContentOffset:CGPointMake(self.selectedIndex*self.iconSize.width, 0) animated:NO];
+    NSLog(@"layout subviews, index: %ld", (long)self.selectedIndex);
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
@@ -97,8 +109,9 @@
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    NSInteger index = (NSInteger)(scrollView.contentOffset.x/self.iconSize.width);
     if ([self.delegate respondsToSelector:@selector(picker:didSelectOptionIndex:)]) {
-        [self.delegate picker:self didSelectOptionIndex:(NSInteger)(scrollView.contentOffset.x/self.iconSize.width)];
+        [self.delegate picker:self didSelectOptionIndex:index];
     }
 }
 

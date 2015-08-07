@@ -21,9 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.picker = [[CKGScrollPicker alloc] init];
+    self.picker = [CKGScrollPicker pickerWithOptions:@[@"Any", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"10+"] selectedIndex:2];
     self.picker.delegate = self;
-    self.picker.options = @[@"Any", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"10+"];
     [self.picker loadView];
     [self.capacityView addSubview:self.picker];
     [self.picker alignLeading:@"16" trailing:@"-16" toView:self.capacityView];
@@ -31,13 +30,12 @@
     [self.picker constrainHeight:@"60"];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self.picker setSelectedIndex:2 animated:NO];
-}
-
 - (void)picker:(CKGScrollPicker *)picker didSelectOptionIndex:(NSInteger)index {
     NSLog(@"selected %ld", (long)index);
+}
+
+- (IBAction)didTapButton:(id)sender {
+    [self.picker setSelectedIndex:1 animated:YES];
 }
 
 @end

@@ -34,11 +34,22 @@
                                     <constraint firstItem="ipN-0l-UGG" firstAttribute="top" secondItem="4hu-cf-yi4" secondAttribute="top" constant="14" id="bPZ-Ql-a9r"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nvr-GH-VQl">
+                                <rect key="frame" x="277" y="162" width="46" height="30"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapButton:" destination="whP-gf-Uak" eventType="touchUpInside" id="NQ0-lq-gVu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Nvr-GH-VQl" firstAttribute="top" secondItem="4hu-cf-yi4" secondAttribute="bottom" constant="8" id="KPb-Fp-2Pe"/>
                             <constraint firstAttribute="trailing" secondItem="4hu-cf-yi4" secondAttribute="trailing" id="V3t-hI-pPM"/>
                             <constraint firstItem="4hu-cf-yi4" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" id="fob-ZN-mK5"/>
+                            <constraint firstAttribute="centerX" secondItem="Nvr-GH-VQl" secondAttribute="centerX" id="q5m-rW-cw0"/>
                             <constraint firstItem="4hu-cf-yi4" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leading" id="vzO-jl-n34"/>
                         </constraints>
                     </view>

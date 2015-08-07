@@ -18,7 +18,6 @@
 
 @interface CKGScrollPicker : UIView <UIScrollViewDelegate>
 
-@property (nonatomic, strong) NSArray *options;
 @property (nonatomic) CGSize iconSize;
 @property (nonatomic, strong) UIFont *font;
 @property (nonatomic, strong) UIColor *textColor;
@@ -28,6 +27,8 @@
 
 @property (nonatomic, weak) id<CKGScrollPickerDelegate> delegate;
 
++ (instancetype)pickerWithOptions:(NSArray *)options selectedIndex:(NSInteger)index;
+- (instancetype)initWithOptions:(NSArray *)options selectedIndex:(NSInteger)index;
 - (void)loadView;
 - (void)setSelectedIndex:(NSInteger)index animated:(BOOL)animated;
 
