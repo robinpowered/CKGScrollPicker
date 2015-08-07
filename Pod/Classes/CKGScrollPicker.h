@@ -29,5 +29,6 @@
 @property (nonatomic, weak) id<CKGScrollPickerDelegate> delegate;
 
 - (void)loadView;
+- (void)setSelectedIndex:(NSInteger)index animated:(BOOL)animated;
 
 @end

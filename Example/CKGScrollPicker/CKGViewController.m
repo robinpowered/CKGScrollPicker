@@ -13,6 +13,7 @@
 @interface CKGViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *capacityView;
+@property (nonatomic, strong) CKGScrollPicker *picker;
 
 @end
 
@@ -20,14 +21,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    CKGScrollPicker *capacityPicker = [[CKGScrollPicker alloc] init];
-    capacityPicker.delegate = self;
-    capacityPicker.options = @[@"Any", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"10+"];
-    [capacityPicker loadView];
-    [self.capacityView addSubview:capacityPicker];
-    [capacityPicker alignLeading:@"16" trailing:@"-16" toView:self.capacityView];
-    [capacityPicker alignBottomEdgeWithView:self.capacityView predicate:@"0"];
-    [capacityPicker constrainHeight:@"60"];
+    self.picker = [[CKGScrollPicker alloc] init];
+    self.picker.delegate = self;
+    self.picker.options = @[@"Any", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"10+"];
+    [self.picker loadView];
+    [self.capacityView addSubview:self.picker];
+    [self.picker alignLeading:@"16" trailing:@"-16" toView:self.capacityView];
+    [self.picker alignBottomEdgeWithView:self.capacityView predicate:@"0"];
+    [self.picker constrainHeight:@"60"];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.picker setSelectedIndex:2 animated:NO];
 }
 
 - (void)picker:(CKGScrollPicker *)picker didSelectOptionIndex:(NSInteger)index {

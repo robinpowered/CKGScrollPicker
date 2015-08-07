@@ -102,4 +102,8 @@
     }
 }
 
+- (void)setSelectedIndex:(NSInteger)index animated:(BOOL)animated {
+    [self.scrollView setContentOffset:CGPointMake(index*self.iconSize.width, 0) animated:animated];
+}
+
 @end
