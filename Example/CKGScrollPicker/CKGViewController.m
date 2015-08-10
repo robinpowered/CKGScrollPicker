@@ -23,7 +23,7 @@
     [super viewDidLoad];
     self.picker = [CKGScrollPicker pickerWithOptions:@[@"Any", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9", @"10", @"10+"] selectedIndex:2];
     self.picker.delegate = self;
-    [self.picker loadView];
+    [self.picker reload];
     [self.capacityView addSubview:self.picker];
     [self.picker alignLeading:@"16" trailing:@"-16" toView:self.capacityView];
     [self.picker alignBottomEdgeWithView:self.capacityView predicate:@"0"];

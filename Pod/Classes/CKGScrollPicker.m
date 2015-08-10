@@ -39,7 +39,7 @@
     return [[self alloc] initWithOptions:options selectedIndex:index];
 }
 
-- (void)loadView {
+- (void)reload {
     [self addSubview:self.scrollView];
     [self.scrollView constrainWidth:[NSString stringWithFormat:@"%f", self.iconSize.width] height:[NSString stringWithFormat:@"%f", self.iconSize.height]];
     [self.scrollView alignCenterWithView:self];

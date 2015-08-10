@@ -29,7 +29,7 @@
 
 + (instancetype)pickerWithOptions:(NSArray *)options selectedIndex:(NSInteger)index;
 - (instancetype)initWithOptions:(NSArray *)options selectedIndex:(NSInteger)index;
-- (void)loadView;
+- (void)reload;
 - (void)setSelectedIndex:(NSInteger)index animated:(BOOL)animated;
 
 @end
