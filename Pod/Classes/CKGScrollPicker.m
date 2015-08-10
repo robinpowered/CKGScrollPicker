@@ -11,9 +11,8 @@
 
 @interface CKGScrollPicker ()
 
-@property (nonatomic, strong, readonly) UIScrollView *scrollView;
-@property (nonatomic, strong, readonly) NSArray *options;
-@property (nonatomic, readonly) NSInteger selectedIndex;
+@property (nonatomic, strong) UIScrollView *scrollView;
+
 
 @end
 

@@ -24,6 +24,8 @@
 @property (nonatomic, strong) UIColor *circleColor;
 @property (nonatomic) CGFloat circleSize;
 @property (nonatomic) CGFloat circleBorderWidth;
+@property (nonatomic, strong) NSArray *options;
+@property (nonatomic) NSInteger selectedIndex;
 
 @property (nonatomic, weak) id<CKGScrollPickerDelegate> delegate;
 
