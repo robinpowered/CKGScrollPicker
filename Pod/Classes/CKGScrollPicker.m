@@ -19,18 +19,30 @@
 
 @implementation CKGScrollPicker
 
+- (void)setup {
+    _scrollView = [[UIScrollView alloc] init];
+    _textColor = [UIColor grayColor];
+    _font = [UIFont systemFontOfSize:16];
+    _iconSize = CGSizeMake(65, 40);
+    _circleColor = [UIColor blueColor];
+    _circleSize = 40;
+    _circleBorderWidth = 1;
+}
+
 - (id)initWithOptions:(NSArray *)options selectedIndex:(NSInteger)index {
     self = [super init];
     if (self) {
-        _scrollView = [[UIScrollView alloc] init];
         _options = options;
         _selectedIndex = index;
-        _textColor = [UIColor grayColor];
-        _font = [UIFont systemFontOfSize:16];
-        _iconSize = CGSizeMake(65, 40);
-        _circleColor = [UIColor blueColor];
-        _circleSize = 40;
-        _circleBorderWidth = 1;
+        [self setup];
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self setup];
     }
     return self;
 }
